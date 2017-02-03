@@ -42,7 +42,6 @@ class event_handler:
         predicate should be a callable which result will be interpreted as a
         boolean value.  A timeout may be provided giving the maximum time to
         wait.
-
         """
         endtime = None
         waittime = timeout
