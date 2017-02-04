@@ -1,21 +1,18 @@
 $def with (form, button_resp)
 <!doctype html>
 <html>
-<head
+<head>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
 <center>
-    <img src="/images/deathstar.jpg" width="256" height="256" >
-    <br>
-    <b>Welcome aboard!</b>
+    <img src="/static/wordclock.jpg" width="256" height="256" >
     <br>
     $button_resp
-</center>
-
 <form name="main" method="post">
     $:form.render()
 </form>
 
+</center>
 </html>

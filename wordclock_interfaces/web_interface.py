@@ -3,19 +3,22 @@ from web import form
 import threading
 
 render = web.template.render('web_templates/')
-button_resp = "temp"
 
 my_form = form.Form(
- form.Button("btn", id="Search planet", value="ipfact", html="Find Target", class_="ipfact"),
- form.Button("btn", id="Lock on Target", value="lockta", html="Select planet to target", class_="lockta"),
- form.Button("btn", id="Destroy all humans", value="deshum", html="Destroy all humans", class_="deshum"),
- form.Button("submit", type="submit", description="Register")
+ form.Button("btn", id="EVENT_BUTTON_LEFT", value="True", html="Left", class_="_left"),
+ form.Button("btn", id="EVENT_BUTTON_RETURN", value="True", html="Return", class_="_return"),
+ form.Button("btn", id="EVENT_BUTTON_RIGHT", value="True", html="Right", class_="_right"),
 )
 
 class index:
     def GET(self):
         form = my_form()
-        return render.index(form, button_resp)
+        return render.index(form, "Welcome")
+
+    def POST(self):
+        inp = web.input(id="EVENT_BUTTON_LEFT")
+        form = my_form()
+        return render.index(form, "Answer received: " + str(inp))
 
 class web_interface(threading.Thread):
 
