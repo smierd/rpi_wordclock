@@ -18,7 +18,7 @@ class index:
     def POST(self):
         inp = web.input(id="EVENT_BUTTON_LEFT")
         form = my_form()
-        return render.index(form, "Answer received: " + str(inp))
+        return render.index(form, "Answer received")
 
 class web_interface(threading.Thread):
 
