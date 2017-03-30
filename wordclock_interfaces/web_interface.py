@@ -1,24 +1,31 @@
 import web
-from web import form
+import json
 import threading
 
-render = web.template.render('web_templates/')
-
-my_form = form.Form(
- form.Button("btn", id="EVENT_BUTTON_LEFT", value="True", html="Left", class_="_left"),
- form.Button("btn", id="EVENT_BUTTON_RETURN", value="True", html="Return", class_="_return"),
- form.Button("btn", id="EVENT_BUTTON_RIGHT", value="True", html="Right", class_="_right"),
-)
+render = web.template.render('wordclock_interfaces/web_templates/')
 
 class index:
     def GET(self):
-        form = my_form()
-        return render.index(form, "Welcome")
+        return render.index("No button pressed yet.")
 
     def POST(self):
-        inp = web.input(id="EVENT_BUTTON_LEFT")
-        form = my_form()
-        return render.index(form, "Answer received")
+        return web.input().signal
+
+class EvtInjector:
+    def __init__(self, evtHandler):
+        self.evtHandler = evtHandler
+
+    def __call__(self, handler):
+        self.evtHandler.setEvent(self.evtHandler.EVENT_BUTTON_LEFT)
+        input = web.input()
+        print input
+        return handler()
+
+# Used to customize port-settings
+class CustomWebApp(web.application):
+    def run(self, port=80, *middleware):
+        func = self.wsgifunc(*middleware)
+        return web.httpserver.runsimple(func, ('0.0.0.0', port))
 
 class web_interface(threading.Thread):
 
@@ -38,7 +45,8 @@ class web_interface(threading.Thread):
         self.start()
 
     def run(self):
-        app = web.application(self.urls, globals())
+        app = CustomWebApp(self.urls, globals())
+        app.add_processor(EvtInjector(self.evtHandler))
         app.run()
 
     def _left(self):
