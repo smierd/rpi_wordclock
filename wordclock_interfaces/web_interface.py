@@ -1,5 +1,4 @@
 import web
-import json
 import threading
 
 render = web.template.render('wordclock_interfaces/web_templates/')
@@ -21,7 +20,6 @@ class EvtInjector:
             self.evtHandler.setEvent(int(eventId.signal))
         return handler()
 
-# Used to customize port-settings
 class CustomWebApp(web.application):
     def run(self, port=80, *middleware):
         func = self.wsgifunc(*middleware)

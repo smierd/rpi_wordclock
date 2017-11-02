@@ -2,8 +2,9 @@ $def with (text)
 <!doctype html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wordclock Webinterface</title>
-        <link rel="stylesheet" type="text/css" href="/static/tutorial.css" />
+        <link rel="stylesheet" href="/static/style.css">
         <script type="text/javascript" src="/static/jquery.js"></script>
         <script type="text/javascript">
             jQuery(document).ready(function() {
@@ -22,16 +23,18 @@ $def with (text)
         </script>
     </head>
     <body>
+     <div class="column" align="center">
         <center>
-            <img src="/static/wordclock.jpg" width="256" height="256" >
+            <img src="/static/wordclock.jpg" width="100%" height="100%" >
             <br><br>
             <form class="form" method="post">
-                <button class="eventtrigger" value="0">Left</button>
-                <button class="eventtrigger" value="2">Return</button>
-                <button class="eventtrigger" value="1">Right</button>
+                <button class="eventtrigger" value="0">&#x25C0;</button>
+                <button class="eventtrigger" value="2">&#9632;</button>
+                <button class="eventtrigger" value="1">&#9654;</button>
             </form>
             <br><br>
             <span id="ans">$text</span>
         </center>
+    </div>
     </body>
 </html>
