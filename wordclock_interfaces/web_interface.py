@@ -16,9 +16,9 @@ class EvtInjector:
         self.evtHandler = evtHandler
 
     def __call__(self, handler):
-        self.evtHandler.setEvent(self.evtHandler.EVENT_BUTTON_LEFT)
-        input = web.input()
-        print input
+        eventId = web.input(signal="invalid")
+        if eventId.signal != "invalid":
+            self.evtHandler.setEvent(int(eventId.signal))
         return handler()
 
 # Used to customize port-settings
