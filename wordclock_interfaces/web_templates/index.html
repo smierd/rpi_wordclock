@@ -1,4 +1,4 @@
-$def with (text)
+$def with ()
 <!doctype html>
 <html>
     <head>
@@ -14,7 +14,6 @@ $def with (text)
                     type: "POST",
                     data: {signal : value},
                     success: function(data) {
-                    jQuery('#ans').html(data).hide().fadeIn(500);
                     },
                     });
                 return false;
@@ -26,14 +25,12 @@ $def with (text)
      <div class="column" align="center">
         <center>
             <img src="/static/wordclock.jpg" width="100%" height="100%" >
-            <br><br>
+            <br>
             <form class="form" method="post">
                 <button class="eventtrigger" value="0">&#x25C0;</button>
                 <button class="eventtrigger" value="2">&#9632;</button>
                 <button class="eventtrigger" value="1">&#9654;</button>
             </form>
-            <br><br>
-            <span id="ans">$text</span>
         </center>
     </div>
     </body>

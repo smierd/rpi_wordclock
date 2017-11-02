@@ -5,7 +5,7 @@ render = web.template.render('wordclock_interfaces/web_templates/')
 
 class index:
     def GET(self):
-        return render.index("No button pressed yet.")
+        return render.index()
 
     def POST(self):
         return web.input().signal
