@@ -41,10 +41,11 @@ Required python dependencies:
   * netifaces (to get the ip of the pi)
   * pil
   * svgwrite (to plot stencil/wiring layouts)
+  * web.py (to run the webinterface of the clock)
 
 To install use::
 
-    sudo pip install pytz astral feedparser pillow svgwrite freetype-py netifaces monotonic
+    sudo pip install pytz astral feedparser pillow svgwrite freetype-py netifaces monotonic web.py
 
 
 .. _temperature_sensor:
